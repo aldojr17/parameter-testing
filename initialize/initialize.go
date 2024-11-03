@@ -5,7 +5,6 @@ import (
 	log "parameter-testing/logger"
 	"parameter-testing/utils"
 
-	"github.com/go-redis/redis"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -14,7 +13,6 @@ import (
 type Application struct {
 	Config   *config.Config
 	Database *gorm.DB
-	Redis    *redis.Client
 }
 
 func InitApp() *Application {
@@ -30,7 +28,6 @@ func InitApp() *Application {
 	app := &Application{
 		Config:   cfg,
 		Database: initializeDB(cfg),
-		Redis:    initializeRedis(cfg),
 	}
 
 	return app
@@ -48,17 +45,4 @@ func initializeDB(cfg *config.Config) *gorm.DB {
 	)
 
 	return db
-}
-
-func initializeRedis(cfg *config.Config) *redis.Client {
-	client := redis.NewClient(&redis.Options{
-		Addr: cfg.Redis.Addr(),
-		DB:   cfg.Redis.Index(),
-	})
-
-	log.Info("Redis:\n",
-		"config", cfg.Redis.ConfigInfo(),
-	)
-
-	return client
 }

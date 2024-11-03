@@ -5,7 +5,3 @@ development:
     username: "<db username>"
     password: "<db password>"
     db_name: "<db name>"
-  redis:
-    host: "localhost"
-    port: 6379
-    default_ttl: 10 # Minutes
