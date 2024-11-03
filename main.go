@@ -21,7 +21,7 @@ func main() {
 
 	router.Routes(r, app)
 
-	if err := r.Run(); err != nil {
+	if err := r.Run("localhost:8080"); err != nil {
 		panic(err)
 	}
 }

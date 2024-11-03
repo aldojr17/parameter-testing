@@ -3,7 +3,7 @@ package initialize
 import (
 	"parameter-testing/config"
 	log "parameter-testing/logger"
-	"parameter-testing/utils"
+	"parameter-testing/util"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
@@ -21,7 +21,7 @@ func InitApp() *Application {
 		log.Fatal("Error loading .env file")
 	}
 
-	env := utils.GetEnv("ENV", "development")
+	env := util.GetEnv("ENV", "development")
 
 	cfg := config.GetConfig(env)
 

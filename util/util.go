@@ -1,6 +1,9 @@
-package utils
+package util
 
-import "os"
+import (
+	"os"
+	"time"
+)
 
 func GetEnv(key, fallback string) string {
 	if value, ok := os.LookupEnv(key); ok {
@@ -8,4 +11,8 @@ func GetEnv(key, fallback string) string {
 	}
 
 	return fallback
+}
+
+func GenerateCurrentTimestamp() int64 {
+	return time.Now().Unix()
 }

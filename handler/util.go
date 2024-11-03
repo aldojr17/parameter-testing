@@ -2,7 +2,7 @@ package handler
 
 import (
 	"net/http"
-	"parameter-testing/utils/pagination"
+	"parameter-testing/util/pagination"
 
 	"github.com/gin-gonic/gin"
 )
